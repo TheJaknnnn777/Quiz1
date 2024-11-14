@@ -1,0 +1,21 @@
+name: Delete File After 1 Day
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Menjalankan setiap hari pada pukul 00:00 UTC
+
+jobs:
+  delete_files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Delete HTML file
+        run: |
+          rm -f index.html  # Ganti dengan path file HTML kamu
+          git config --global user.email "wdppwedepehh@gmail.com"
+          git config --global user.name "TheJaknnnn777"
+          git add -u
+          git commit -m "Auto delete HTML file after 1 day"
+          git push
